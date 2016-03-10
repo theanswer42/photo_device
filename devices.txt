@@ -1,0 +1,234 @@
+dmesg when I connect the card reader (no cards)
+
+[1000531.924758] usb 4-2: new SuperSpeed USB device number 41 using xhci_hcd
+[1000531.943249] usb 4-2: New USB device found, idVendor=8564, idProduct=4000
+[1000531.943254] usb 4-2: New USB device strings: Mfr=3, Product=4, SerialNumber=5
+[1000531.943257] usb 4-2: Product: Transcend   
+[1000531.943260] usb 4-2: Manufacturer: TS-RDF8 
+[1000531.943262] usb 4-2: SerialNumber: 000000082
+[1000531.944188] usb-storage 4-2:1.0: USB Mass Storage device detected
+[1000531.944456] scsi20 : usb-storage 4-2:1.0
+[1000532.945779] scsi 20:0:0:0: Direct-Access     Generic  STORAGE DEVICE   TS26 PQ: 0 ANSI: 6
+[1000532.946249] scsi 20:0:0:1: Direct-Access     Generic  STORAGE DEVICE   TS26 PQ: 0 ANSI: 6
+[1000532.946693] scsi 20:0:0:2: Direct-Access     Generic  STORAGE DEVICE   TS26 PQ: 0 ANSI: 6
+[1000532.946981] sd 20:0:0:0: Attached scsi generic sg2 type 0
+[1000532.947206] sd 20:0:0:1: Attached scsi generic sg3 type 0
+[1000532.947400] sd 20:0:0:2: Attached scsi generic sg4 type 0
+[1000532.971147] sd 20:0:0:2: [sdd] Attached SCSI removable disk
+[1000532.973134] sd 20:0:0:0: [sdb] Attached SCSI removable disk
+[1000532.973537] sd 20:0:0:1: [sdc] Attached SCSI removable disk
+
+
+When card is inserted:
+[1000625.738877] sd 20:0:0:1: [sdc] 62521344 512-byte logical blocks: (32.0 GB/29.8 GiB)
+[1000625.741301]  sdc: sdc1 sdc2 sdc3
+
+
+When card is removed:
+nothing
+
+When reader is removed:
+[1000770.182572] usb 4-2: USB disconnect, device number 41
+
+
+When drive is connected:
+[1000832.304674] usb 4-2: new SuperSpeed USB device number 42 using xhci_hcd
+[1000832.321098] usb 4-2: New USB device found, idVendor=1058, idProduct=0837
+[1000832.321101] usb 4-2: New USB device strings: Mfr=2, Product=3, SerialNumber=1
+[1000832.321102] usb 4-2: Product: My Passport 0837
+[1000832.321103] usb 4-2: Manufacturer: Western Digital
+[1000832.321104] usb 4-2: SerialNumber: 5758573145343532484A3243
+[1000832.321663] usb-storage 4-2:1.0: USB Mass Storage device detected
+[1000832.321735] scsi21 : usb-storage 4-2:1.0
+[1000833.321749] scsi 21:0:0:0: Direct-Access     WD       My Passport 0837 1072 PQ: 0 ANSI: 6
+[1000833.322036] scsi 21:0:0:1: Enclosure         WD       SES Device       1072 PQ: 0 ANSI: 6
+[1000833.322983] sd 21:0:0:0: Attached scsi generic sg2 type 0
+[1000833.323058] ses 21:0:0:1: Attached Enclosure device
+[1000833.323107] ses 21:0:0:1: Attached scsi generic sg3 type 13
+[1000833.323555] ses 21:0:0:1: Failed to get diagnostic page 0x8000002
+[1000833.323558] ses 21:0:0:1: Failed to bind enclosure -19
+[1000833.324249] sd 21:0:0:0: [sdb] Spinning up disk...
+[1000834.326379] .....ready
+[1000838.412866] sd 21:0:0:0: [sdb] 1953458176 512-byte logical blocks: (1.00 TB/931 GiB)
+[1000838.413139] sd 21:0:0:0: [sdb] Write Protect is off
+[1000838.413140] sd 21:0:0:0: [sdb] Mode Sense: 53 00 10 08
+[1000838.413363] sd 21:0:0:0: [sdb] No Caching mode page found
+[1000838.413365] sd 21:0:0:0: [sdb] Assuming drive cache: write through
+[1000838.555083]  sdb: sdb1
+[1000838.556029] sd 21:0:0:0: [sdb] Attached SCSI disk
+
+sudo apt-get install usb-utils
+
+sagar@sg6:~$ lsusb
+Bus 002 Device 002: ID 8087:8000 Intel Corp. 
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 002: ID 8087:8008 Intel Corp. 
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 004 Device 039: ID 2109:0812  
+Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 003 Device 111: ID 8087:07dc Intel Corp. 
+Bus 003 Device 110: ID 2516:0017  
+Bus 003 Device 109: ID 046d:c069 Logitech, Inc. M500 Laser Mouse
+Bus 003 Device 114: ID 0fcf:1009 Dynastream Innovations, Inc. 
+Bus 003 Device 113: ID 04a9:190a Canon, Inc. CanoScan LiDE 210
+Bus 003 Device 115: ID 13fd:2040 Initio Corporation 
+Bus 003 Device 112: ID 1a40:0101 Terminus Technology Inc. 4-Port HUB
+Bus 003 Device 108: ID 2109:2812  
+Bus 003 Device 074: ID 5986:0536 Acer, Inc 
+Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+
+
+with drive attached:
+
+sagar@sg6:~$ lsusb
+Bus 002 Device 002: ID 8087:8000 Intel Corp. 
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 002: ID 8087:8008 Intel Corp. 
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 004 Device 039: ID 2109:0812  
+Bus 004 Device 044: ID 1058:0837 Western Digital Technologies, Inc. 
+Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 003 Device 111: ID 8087:07dc Intel Corp. 
+Bus 003 Device 110: ID 2516:0017  
+Bus 003 Device 109: ID 046d:c069 Logitech, Inc. M500 Laser Mouse
+Bus 003 Device 114: ID 0fcf:1009 Dynastream Innovations, Inc. 
+Bus 003 Device 113: ID 04a9:190a Canon, Inc. CanoScan LiDE 210
+Bus 003 Device 115: ID 13fd:2040 Initio Corporation 
+Bus 003 Device 112: ID 1a40:0101 Terminus Technology Inc. 4-Port HUB
+Bus 003 Device 108: ID 2109:2812  
+Bus 003 Device 074: ID 5986:0536 Acer, Inc 
+Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+
+also see udevadm
+
+from here:
+http://unix.stackexchange.com/questions/144029/command-to-determine-ports-of-a-device-like-dev-ttyusb0
+
+
+#!/bin/bash
+
+for sysdevpath in $(find /sys/bus/usb/devices/usb*/ -name dev); do
+    (
+        syspath="${sysdevpath%/dev}"
+        devname="$(udevadm info -q name -p $syspath)"
+        [[ "$devname" == "bus/"* ]] && continue
+        eval "$(udevadm info -q property --export -p $syspath)"
+        [[ -z "$ID_SERIAL" ]] && continue
+        echo "/dev/$devname - $ID_SERIAL"
+    )
+done
+
+
+Explanation:
+
+find /sys/bus/usb/devices/usb*/ -name dev
+
+Devices which show up in /dev have a dev file in their /sys directory. So we search for directories matching this criteria.
+ 
+
+syspath="${sysdevpath%/dev}"
+
+We want the directory path, so we strip off /dev.
+ 
+
+devname="$(udevadm info -q name -p $syspath)"
+
+This gives us the path in /dev that corresponds to this /sys device.
+ 
+
+[[ "$devname" == "bus/"* ]] && continue
+
+This filters out things which aren't actual devices. Otherwise you'll get things like USB controllers & hubs.
+ 
+
+eval "$(udevadm info -q property --export -p $syspath)"
+
+The udevadm info -q property --export command lists all the device properties in a format that can be parsed by the shell into variables. So we simply call eval on this. This is also the reason why we wrap the code in the parenthesis, so that we use a subshell, and the variables get wiped on each loop.
+ 
+
+[[ -z "$ID_SERIAL" ]] && continue
+
+More filtering of things that aren't actual devices.
+ 
+
+echo "/dev/$devname - $ID_SERIAL"
+
+I hope you know what this line does :-)
+
+
+
+
+
+
+
+
+sagar@sg6:~$ udevadm info -q property  --export -p /sys/bus/usb/devices/usb4/4-2/4-2:1.0/host23/target23:0:0/23:0:0:0/block/sdb/sdb1
+DEVLINKS='/dev/disk/by-id/ata-WDC_WD10JMVW-11AJGS3_WD-WXW1E452HJ2C-part1 /dev/disk/by-id/wwn-0x50014ee605eda888-part1 /dev/disk/by-partlabel/sg-photos /dev/disk/by-partuuid/21323cff-2abe-430b-881b-e69dba09be94 /dev/disk/by-path/pci-0000:00:14.0-usb-0:2:1.0-scsi-0:0:0:0-part1 /dev/disk/by-uuid/3b9317bf-6f14-4cc0-9c60-11970fafbe23'
+DEVNAME='/dev/sdb1'
+DEVPATH='/bus/usb/devices/usb4/4-2/4-2:1.0/host23/target23:0:0/23:0:0:0/block/sdb/sdb1'
+DEVTYPE='partition'
+ID_ATA='1'
+ID_ATA_DOWNLOAD_MICROCODE='1'
+ID_ATA_FEATURE_SET_APM='1'
+ID_ATA_FEATURE_SET_APM_CURRENT_VALUE='128'
+ID_ATA_FEATURE_SET_APM_ENABLED='1'
+ID_ATA_FEATURE_SET_PM='1'
+ID_ATA_FEATURE_SET_PM_ENABLED='1'
+ID_ATA_FEATURE_SET_PUIS='1'
+ID_ATA_FEATURE_SET_PUIS_ENABLED='0'
+ID_ATA_FEATURE_SET_SECURITY='1'
+ID_ATA_FEATURE_SET_SECURITY_ENABLED='0'
+ID_ATA_FEATURE_SET_SECURITY_ENHANCED_ERASE_UNIT_MIN='2'
+ID_ATA_FEATURE_SET_SECURITY_ERASE_UNIT_MIN='382'
+ID_ATA_FEATURE_SET_SMART='1'
+ID_ATA_FEATURE_SET_SMART_ENABLED='1'
+ID_ATA_ROTATION_RATE_RPM='5400'
+ID_ATA_SATA='1'
+ID_ATA_SATA_SIGNAL_RATE_GEN1='1'
+ID_ATA_SATA_SIGNAL_RATE_GEN2='1'
+ID_ATA_WRITE_CACHE='1'
+ID_ATA_WRITE_CACHE_ENABLED='1'
+ID_BUS='ata'
+ID_FS_TYPE='ext4'
+ID_FS_USAGE='filesystem'
+ID_FS_UUID='3b9317bf-6f14-4cc0-9c60-11970fafbe23'
+ID_FS_UUID_ENC='3b9317bf-6f14-4cc0-9c60-11970fafbe23'
+ID_FS_VERSION='1.0'
+ID_MODEL='WDC_WD10JMVW-11AJGS3'
+ID_MODEL_ENC='WDC\x20WD10JMVW-11AJGS3\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'
+ID_PART_ENTRY_DISK='8:16'
+ID_PART_ENTRY_NAME='sg-photos'
+ID_PART_ENTRY_NUMBER='1'
+ID_PART_ENTRY_OFFSET='2048'
+ID_PART_ENTRY_SCHEME='gpt'
+ID_PART_ENTRY_SIZE='1953454080'
+ID_PART_ENTRY_TYPE='0fc63daf-8483-4772-8e79-3d69d8477de4'
+ID_PART_ENTRY_UUID='21323cff-2abe-430b-881b-e69dba09be94'
+ID_PART_TABLE_TYPE='gpt'
+ID_PART_TABLE_UUID='39599451-3689-4ca4-a48a-a76845e83213'
+ID_PATH='pci-0000:00:14.0-usb-0:2:1.0-scsi-0:0:0:0'
+ID_PATH_TAG='pci-0000_00_14_0-usb-0_2_1_0-scsi-0_0_0_0'
+ID_REVISION='01.01A01'
+ID_SERIAL='WDC_WD10JMVW-11AJGS3_WD-WXW1E452HJ2C'
+ID_SERIAL_SHORT='WD-WXW1E452HJ2C'
+ID_TYPE='disk'
+ID_WWN='0x50014ee605eda888'
+ID_WWN_WITH_EXTENSION='0x50014ee605eda888'
+MAJOR='8'
+MINOR='17'
+SUBSYSTEM='block'
+TAGS=':systemd:'
+USEC_INITIALIZED='393014016'
+
+
+
+
+
+
+
+
+
+
+
+* Notifications
+http://unix.stackexchange.com/questions/116536/usb-connect-disconnect-notification/116777#116777
